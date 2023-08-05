@@ -3,11 +3,11 @@ services:
     jupyterlab:
         build: .
         image: jupyterlab-test-img
-        container_name: dev-jupyterlab
+        container_name: dev-jupyterlab2
         working_dir: /app
         volumes:
             - ./app:/app
         ports:
-            - "6666:6666"
+            - "5555:5555"
         command:
             jupyter-lab --ip 0.0.0.0 --allow-root -b localhost

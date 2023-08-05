@@ -11,3 +11,14 @@ RUN python -m pip install jupyterlab
 # RUN pip install requests
 # RUN pip install selenium
 # RUN pip install beautifulsoup4
+
+
+
+
+# Set working directory
+WORKDIR /app
+
+
+
+# Run JupyterLab on container start
+CMD ["jupyter-lab", "--ip", "0.0.0.0", "--allow-root", "-b", "localhost"]

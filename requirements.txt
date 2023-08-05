@@ -1,3 +1,4 @@
 fastapi
 uvicorn==0.13
-flask
+flask==2.0.2
+click==8.0.3

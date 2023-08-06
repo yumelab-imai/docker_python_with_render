@@ -10,7 +10,7 @@ requests
 textract
 pypdf
 transformers
-langchain
+langchain==0.0.253
 openai
 faiss-cpu
 data

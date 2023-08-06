@@ -68,20 +68,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print('その３~4')
-        # if event.message.text
-        if true
-            message = event.message.text
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=message)
-                )
-        else:
-            print('not found')
-            message = 'not found process'
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=message)
-                )
+        message = event.message.text
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=message)
+            )
 
 
 if __name__ == "__main__":

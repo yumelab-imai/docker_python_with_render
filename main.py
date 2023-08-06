@@ -11,11 +11,83 @@
 # for Flask
 from flask import Flask, jsonify
 
-app = Flask(__name__)
+from flask import request, abort
 
-@app.route("/", methods=['GET'])
-def index():
-    return jsonify({"Hello": "World"})
+from linebot import (
+    LineBotApi, WebhookHandler
+)
+from linebot.exceptions import (
+    InvalidSignatureError
+)
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage,
+)
+import os
+
+#Token取得
+
+# YOUR_CHANNEL_ACCESS_TOKEN = "チャネルアクセストークン"
+# YOUR_CHANNEL_SECRET = "チャネルシークレット"
+# os.getenv()
+
+
+# 問題なし
+# app = Flask(__name__)
+
+# @app.route("/", methods=['GET'])
+# def index():
+#     return jsonify({"Hello": "World"})
+
+# if __name__ == "__main__":
+#     app.run()
+
+app = Flask(__name__)
+app.debug = False
+
+line_bot_api = LineBotApi(os.getenv('YOUR_CHANNEL_ACCESS_TOKEN'))
+handler = WebhookHandler(os.getenv('YOUR_CHANNEL_SECRET'))
+
+@app.route("/callback", methods=['POST'])
+def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+
+    return 'OK'
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    df_list = [
+        ['Google','https://www.google.com/'],
+        ['yahoo','https://www.yahoo.co.jp/'],
+        ]
+
+    for i in range(len(df_list)):
+        url = None
+        if event.message.text == df_list[i][0]:
+            url = df_list[i][1]
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=url)
+                )
+        else:
+            continue
+
+        if url == None:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='そのようなサイトは存在しません')
+                )
+
 
 if __name__ == "__main__":
     app.run()

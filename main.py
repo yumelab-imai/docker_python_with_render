@@ -136,6 +136,36 @@ def handle_message(event):
 
     print('step 222')
     # print(chunks3)
+
+    # DB利用
+
+    # Get embedding model
+    # embeddings = OpenAIEmbeddings()
+
+    #  vector databaseの作成
+    # db = FAISS.from_documents(chunks3, embeddings)
+
+    # query = "所有者とアクセス許可設定を元に戻すは何ページ目ですか？"
+    # query = "ローカルユーザーの共有フォルダーへのアクセスを制限する方法を教えてください"
+    # query = "共有フォルダーのデータを誤って消去しないためにはどうすればいい？"
+    # query = "所有者とアクセス許可設定を元に戻すは何ページ目ですか？"
+    # query = "Active Directoryドメインユーザーの共有フォルダーへのアクセスを制限するにはどうすればいいですか？"
+    query = "違反行為に対する抑止力の強化に関して何が改正されましたか？"
+
+    # embedding_vector = embeddings.embed_query(query)
+    # docs_and_scores = db.similarity_search_by_vector(embedding_vector)
+
+    print('これがデータベースの中身です。')
+    # print(docs_and_scores)
+
+
+    # chain = load_qa_chain(OpenAI(temperature=0.1,max_tokens=1000), chain_type="stuff")
+
+    # message = chain.run(input_documents=docs_and_scores, question=query)
+    print(query)
+    print('に対する回答は以下の通りです。')
+    # print(message)
+    # sys.exit()
     # ここまで
 
 

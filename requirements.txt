@@ -15,6 +15,7 @@ faiss-cpu
 data
 torch
 tensorflow
+langchain
 
 matplotlib
 beautifulsoup4

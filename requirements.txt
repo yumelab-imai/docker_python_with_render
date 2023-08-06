@@ -20,4 +20,4 @@ tensorflow
 matplotlib
 tiktoken
 beautifulsoup4
-Pydantic
+Pydantic==1.8.2

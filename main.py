@@ -24,23 +24,6 @@ from linebot.models import (
 )
 import os
 
-#Token取得
-
-# YOUR_CHANNEL_ACCESS_TOKEN = "チャネルアクセストークン"
-# YOUR_CHANNEL_SECRET = "チャネルシークレット"
-# os.getenv()
-
-
-# 問題なし
-# app = Flask(__name__)
-
-# @app.route("/", methods=['GET'])
-# def index():
-#     return jsonify({"Hello": "World"})
-
-# if __name__ == "__main__":
-#     app.run()
-
 app = Flask(__name__)
 app.debug = False
 
@@ -68,6 +51,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print('その３~4')
+    # LINE bot => おうむ返し
     message = event.message.text
     line_bot_api.reply_message(
         event.reply_token,

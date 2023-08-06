@@ -69,8 +69,9 @@ def callback():
 def handle_message(event):
     print('その３')
     df_list = [
-        ['Google','https://www.google.com/'],
+        ['google','https://www.google.com/'],
         ['yahoo','https://www.yahoo.co.jp/'],
+        ['qiita','https://qiita.com/coarat/items/d4037b8b08c3c0c41ff5'],
         ]
 
     for i in range(len(df_list)):
@@ -85,12 +86,12 @@ def handle_message(event):
         else:
             continue
 
-        if url == None:
-            print('その5')
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='そのようなサイトは存在しません')
-                )
+    if url == None:
+        print('その5')
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='そのようなサイトは存在しません')
+            )
 
 
 if __name__ == "__main__":

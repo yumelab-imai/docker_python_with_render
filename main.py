@@ -174,7 +174,8 @@ def handle_message(event):
 
     print('その３~4')
     # LINE bot => おうむ返し
-    message = event.message.text
+    # message = event.message.text
+    message = '措置命令及び課徴金納付命令の適用を受けないこととすることで、迅速に問題を改善する制度の創設、特定の消費者へ一定の返金を行った場合に課徴金額から当該金額が減額される返金措置、課徴金の計算の基礎となるべき事実を把握することができない期間における売上額を推計することができる規定の整備、違反行為から遡り10年以内に課徴金納付命令を受けたことがある事業者に対し、課徴金の額を加算（1.5倍）する規定の新設、優良誤認表示・有利誤認表示に対し、直罰（100万円以下の罰金）の新設が改正されました。'
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=message)

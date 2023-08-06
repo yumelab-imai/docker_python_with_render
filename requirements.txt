@@ -4,3 +4,15 @@ flask==2.0.2
 click==8.0.3
 gunicorn==20.1.0
 line-bot-sdk
+
+
+requests
+textract
+pypdf
+transformers
+langchain
+openai
+faiss-cpu
+data
+torch
+tensorflow

@@ -68,7 +68,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print('その３~4')
-        if event.message.text
+        # if event.message.text
+        if true
             message = event.message.text
             line_bot_api.reply_message(
                 event.reply_token,

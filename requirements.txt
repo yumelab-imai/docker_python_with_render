@@ -20,3 +20,4 @@ tensorflow
 matplotlib
 tiktoken
 beautifulsoup4
+Pydantic

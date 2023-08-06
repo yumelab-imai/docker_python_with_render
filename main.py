@@ -46,9 +46,10 @@ app.debug = False
 
 line_bot_api = LineBotApi(os.getenv('YOUR_CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('YOUR_CHANNEL_SECRET'))
-
+print('その１')
 @app.route("/callback", methods=['POST'])
 def callback():
+    print('その２')
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -66,12 +67,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    print('その３')
     df_list = [
         ['Google','https://www.google.com/'],
         ['yahoo','https://www.yahoo.co.jp/'],
         ]
 
     for i in range(len(df_list)):
+        print('その４')
         url = None
         if event.message.text == df_list[i][0]:
             url = df_list[i][1]
@@ -83,6 +86,7 @@ def handle_message(event):
             continue
 
         if url == None:
+            print('その5')
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='そのようなサイトは存在しません')
@@ -90,5 +94,6 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
+    print('その６')
     port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port=port)

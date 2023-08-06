@@ -16,3 +16,7 @@ faiss-cpu
 data
 torch
 tensorflow
+
+matplotlib
+tiktoken
+beautifulsoup4

@@ -67,31 +67,20 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print('その３')
-    df_list = [
-        ['google','https://www.google.com/'],
-        ['yahoo','https://www.yahoo.co.jp/'],
-        ['qiita','https://qiita.com/coarat/items/d4037b8b08c3c0c41ff5'],
-        ]
-
-    for i in range(len(df_list)):
-        print('その４')
-        url = None
-        if event.message.text == df_list[i][0]:
-            url = df_list[i][1]
+    print('その３~4')
+        if event.message.text
+            message = event.message.text
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=url)
+                TextSendMessage(text=message)
                 )
         else:
-            continue
-
-    if url == None:
-        print('その5')
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='そのようなサイトは存在しません')
-            )
+            print('not found')
+            message = 'not found process'
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=message)
+                )
 
 
 if __name__ == "__main__":
